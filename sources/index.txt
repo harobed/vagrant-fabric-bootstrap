@@ -2,6 +2,21 @@
 Vagrant + fabric bootstrap
 ==========================
 
+`vagrant-fabric-bootstrap <https://github.com/harobed/vagrant-fabric-bootstrap>`_ is `my <http://stephane-klein.info>`_
+my bootstrap to integrate `Vagrant <http://www.vagrantup.com/>`_ in my development projects.
+
+This scaffolding contain :
+
+* Debian Squeeze 64bit base box
+* `vagrant-hostmaster <https://github.com/mosaicxm/vagrant-hostmaster>`_ parameters
+* `provision <https://github.com/harobed/vagrant-fabric-bootstrap/blob/master/Vagrantfile#L18>`_ to append automatically
+  vagrant ssh public key to root account
+* `fabfile <https://github.com/harobed/vagrant-fabric-bootstrap/blob/master/fabfile.py>`_ bootstrap
+* and `buildout <http://www.buildout.org/>`_ files
+
+More info : contact me at `contact@stephane-klein.info <mailto:contact@stephane-klein.info>`_
+
+
 Prerequisites
 =============
 
@@ -19,7 +34,14 @@ Prerequisites :
 Quickstart
 ==========
 
-Install Python dependencies (fabric…) with *buildout* :
+Clone `vagrant-fabric-bootstrap <https://github.com/harobed/vagrant-fabric-bootstrap>`_ project :
+
+.. code-block:: sh
+
+    $ git clone https://github.com/harobed/vagrant-fabric-bootstrap.git
+
+
+Install Python dependencies (`fabric <http://docs.fabfile.org/>`_…) with *buildout* :
 
 .. code-block:: sh
 
