@@ -1,0 +1,161 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<title>Vagrant + fabric bootstrap</title>
+<!-- META -->
+
+<!-- LINK -->
+<link rel="top" title="Vagrant Fabric Bootstrap 0.1.0 documentation" href="#" />
+<!-- STYLE -->
+
+<link rel="stylesheet" href="static/readability.css" type="text/css" />
+<link rel="stylesheet" href="static/pygments.css" type="text/css" />
+<!-- SCRIPT -->
+
+<script type="text/javascript">
+var DOCUMENTATION_OPTIONS = {
+  URL_ROOT:       "#",
+  VERSION:        "0.1.0",
+  COLLAPSE_INDEX: false,
+  FILE_SUFFIX:    ".html",
+  HAS_SOURCE:     true
+};
+</script>
+<script type="text/javascript" src="static/jquery.js"></script>
+<script type="text/javascript" src="static/underscore.js"></script>
+<script type="text/javascript" src="static/doctools.js"></script>
+<!--[if lt IE 9]>
+<script type="text/javascript" src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+</head>
+
+<body class="newspaper">
+<div id="container">
+  <header id="header">
+    <p><a href="#" title="Vagrant Fabric Bootstrap 0.1.0 documentation">Vagrant Fabric Bootstrap 0.1.0 documentation</a></p>
+
+    <div class="rel">
+    </div>
+  </header><!-- #header -->
+
+  <div id="document">
+
+<div class="section" id="vagrant-fabric-bootstrap">
+<h1>Vagrant + fabric bootstrap<a class="headerlink" href="#vagrant-fabric-bootstrap" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="on-ubuntu-12-10">
+<h3>On Ubuntu 12.10<a class="headerlink" href="#on-ubuntu-12-10" title="Permalink to this headline">¶</a></h3>
+<p>Prerequisites :</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install virtualbox rubygem1.8
+<span class="nv">$ </span>gem install vagrant
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>Install Python dependencies (fabric…) with <em>buildout</em> :</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>python bootstrap.py
+<span class="nv">$ </span>bin/buildout
+</pre></div>
+</div>
+<p>Install <a class="reference external" href="https://github.com/mosaicxm/vagrant-hostmaster">vagrant-hostmaster</a> :</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>vagrant gem install vagrant-hostmaster
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p><a class="reference external" href="https://github.com/mosaicxm/vagrant-hostmaster">vagrant-hostmaster</a> is a Vagrant plugin to
+manage <tt class="docutils literal"><span class="pre">/etc/hosts</span></tt> entries on both the host OS <strong>and</strong> guest VMs.</p>
+<p>You can configure the hostname with this line in your <tt class="docutils literal"><span class="pre">Vagrantfile</span></tt></p>
+<div class="last highlight-python"><div class="highlight"><pre><span class="n">config</span><span class="o">.</span><span class="n">vm</span><span class="o">.</span><span class="n">host_name</span> <span class="o">=</span> <span class="s">&quot;vagrant.example.com&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">hosts</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">&quot;vagrant.example.com&quot;</span>
+<span class="n">config</span><span class="o">.</span><span class="n">hosts</span><span class="o">.</span><span class="n">aliases</span> <span class="o">=</span> <span class="s">&quot;example.com&quot;</span>
+</pre></div>
+</div>
+</div>
+<p>Download and start <em>vagrant</em> VM :</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>vagrant up
+</pre></div>
+</div>
+<p>You can test <em>ping</em> command on hostname configured by <em>vagrant-hostmaster</em> :</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>ping example.com
+PING example.com <span class="o">(</span>192.168.33.10<span class="o">)</span>: 56 data bytes
+64 bytes from 192.168.33.10: <span class="nv">icmp_seq</span><span class="o">=</span>0 <span class="nv">ttl</span><span class="o">=</span>64 <span class="nb">time</span><span class="o">=</span>0.383 ms
+64 bytes from 192.168.33.10: <span class="nv">icmp_seq</span><span class="o">=</span>1 <span class="nv">ttl</span><span class="o">=</span>64 <span class="nb">time</span><span class="o">=</span>0.462 ms
+</pre></div>
+</div>
+<p>Execute <em>fabric</em> install :</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>bin/fab vagrant install
+<span class="o">[</span>127.0.0.1<span class="o">]</span> Executing task <span class="s1">&#39;install&#39;</span>
+<span class="o">[</span>127.0.0.1<span class="o">]</span> run: whoami
+<span class="o">[</span>127.0.0.1<span class="o">]</span> out: root
+<span class="o">[</span>127.0.0.1<span class="o">]</span> out:
+</pre></div>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<p>In <tt class="docutils literal"><span class="pre">Vagrantfile</span></tt> I have set mac address :</p>
+<div class="highlight-python"><pre>config.vm.network :hostonly, "192.168.33.10", :mac =&gt; "080027e5f699"</pre>
+</div>
+</div>
+</div>
+
+  </div><!-- #document -->
+    <ul class="navigation">
+    </ul>
+</div><!-- #container -->
+
+<aside id="sidebar">
+  <section class="widget toctree">
+    <header class="widgetHead">
+      <h4>Table Of Contents</h4>
+    </header>
+    <div class="widgetBody">
+      <ul>
+<li><a class="reference internal" href="#">Vagrant + fabric bootstrap</a><ul>
+<li><a class="reference internal" href="#prerequisites">Prerequisites</a><ul>
+<li><a class="reference internal" href="#on-ubuntu-12-10">On Ubuntu 12.10</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#quickstart">Quickstart</a></li>
+<li><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+  </section><!-- .widget -->
+  <section id="searchbox" class="widget search">
+    <div class="widgetBody">
+      <form class="search" action="search.html" method="get">
+        <div style="display:none;">
+          <input type="hidden" name="check_keywords" value="yes" />
+          <input type="hidden" name="area" value="default" />
+        </div>
+
+        <input type="text" name="q" value="" placeholder="Quick search" />
+        <button type="submit">Go</button>
+      </form>
+      <p class="searchtip">Enter search terms or a module, class or function name.</p>
+      <script type="text/javascript">$('#searchbox').show(0);</script>
+    </div>
+  </section><!-- .widget -->
+  <section class="widget version">
+    <div class="widgetBody">
+      <p>Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.</p>
+    </div>
+  </section><!-- .widget -->
+  <section class="widget copyright">
+    <div class="widgetBody">
+      <p>&copy; Copyright 2013, Stéphane Klein.</p>
+    </div>
+  </section><!-- .widget -->
+</aside><!-- #sidebar -->
+</body>
+</html>
