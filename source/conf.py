@@ -12,11 +12,7 @@
 # serve to show the default.
 
 import sys, os
-
-import sphinxtheme
-
-readability_path = os.path.dirname(os.path.abspath(sphinxtheme.__file__))
-relative_path = readability_path
+sys.path.append(os.path.abspath('_themes'))
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -30,7 +26,7 @@ relative_path = readability_path
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = []
+extensions = ['sphinxtogithub']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -46,7 +42,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Vagrant Fabric Bootstrap'
-copyright = u'2013, Stéphane Klein'
+copyright = u'2013, <a href="http://stephane-klein.info">Stéphane Klein</a>'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -86,7 +82,7 @@ exclude_patterns = []
 #show_authors = False
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'friendly'
+pygments_style = 'default'
 
 # A list of ignored prefixes for module index sorting.
 #modindex_common_prefix = []
@@ -96,15 +92,16 @@ pygments_style = 'friendly'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'readability'
-html_theme_path = [relative_path]
+html_theme = 'flask_small'
+html_theme_path = ['_themes']
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #html_theme_options = {}
 html_theme_options = {
-    'readabilitystyle': 'athelas'
+    'index_logo': None,
+    'github_fork': 'https://github.com/harobed/vagrant-fabric-bootstrap/'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
