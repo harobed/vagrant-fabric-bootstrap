@@ -2,8 +2,7 @@
 Vagrant + fabric bootstrap
 ==========================
 
-`vagrant-fabric-bootstrap <https://github.com/harobed/vagrant-fabric-bootstrap>`_ is `my <http://stephane-klein.info>`_
-my bootstrap to integrate `Vagrant <http://www.vagrantup.com/>`_ in my development projects.
+`vagrant-fabric-bootstrap <https://github.com/harobed/vagrant-fabric-bootstrap>`_ is `my <http://stephane-klein.info>`_ bootstrap to integrate `Vagrant <http://www.vagrantup.com/>`_ in my development projects.
 
 This scaffolding contain :
 
