@@ -27,7 +27,16 @@ Prerequisites :
 .. code-block:: sh
 
     $ sudo apt-get install virtualbox rubygem1.8
-    $ gem install vagrant
+    $ gem install vagrant vagrant-hostmaster
+
+On Mac OS X
+-----------
+
+Prerequisites :
+
+.. code-block:: sh
+
+    $ gem install vagrant vagrant-hostmaster
 
 
 Quickstart
@@ -40,20 +49,26 @@ Clone `vagrant-fabric-bootstrap <https://github.com/harobed/vagrant-fabric-boots
     $ git clone https://github.com/harobed/vagrant-fabric-bootstrap.git
 
 
+.. Note::
+
+    If `vagrant-hostmaster <https://github.com/mosaicxm/vagrant-hostmaster>`_ is not installed globally,
+    you can install *vagrant-hostmaster*  localy into vagrant's isolated RubyGems instance.
+
+    But, be careful, if you launch command below in folder that contain a *Vagrantfile* 
+    with ``config.hosts`` parameter, you will get an error. Then, do ``cd ..`` before you execute
+    command below :
+
+    .. code-block:: sh
+
+        $ vagrant gem install vagrant-hostmaster
+
+
 Install Python dependencies (`fabric <http://docs.fabfile.org/>`_…) with *buildout* :
 
 .. code-block:: sh
 
     $ python bootstrap.py
     $ bin/buildout
-
-
-Install `vagrant-hostmaster <https://github.com/mosaicxm/vagrant-hostmaster>`_ :
-
-.. code-block:: sh
-
-    $ vagrant gem install vagrant-hostmaster
-
 
 
 .. Note::
