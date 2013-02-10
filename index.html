@@ -57,7 +57,14 @@ vagrant ssh public key to root account</li>
 <h3>On Ubuntu 12.10<a class="headerlink" href="#on-ubuntu-12-10" title="Permalink to this headline">¶</a></h3>
 <p>Prerequisites :</p>
 <div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>sudo apt-get install virtualbox rubygem1.8
-<span class="nv">$ </span>gem install vagrant
+<span class="nv">$ </span>gem install vagrant vagrant-hostmaster
+</pre></div>
+</div>
+</div>
+<div class="section" id="on-mac-os-x">
+<h3>On Mac OS X<a class="headerlink" href="#on-mac-os-x" title="Permalink to this headline">¶</a></h3>
+<p>Prerequisites :</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>gem install vagrant vagrant-hostmaster
 </pre></div>
 </div>
 </div>
@@ -68,13 +75,20 @@ vagrant ssh public key to root account</li>
 <div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/harobed/vagrant-fabric-bootstrap.git
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>If <a class="reference external" href="https://github.com/mosaicxm/vagrant-hostmaster">vagrant-hostmaster</a> is not installed globally,
+you can install <em>vagrant-hostmaster</em>  localy into vagrant&#8217;s isolated RubyGems instance.</p>
+<p>But, be careful, if you launch command below in folder that contain a <em>Vagrantfile</em>
+with <tt class="docutils literal"><span class="pre">config.hosts</span></tt> parameter, you will get an error. Then, do <tt class="docutils literal"><span class="pre">cd</span> <span class="pre">..</span></tt> before you execute
+command below :</p>
+<div class="last highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>vagrant gem install vagrant-hostmaster
+</pre></div>
+</div>
+</div>
 <p>Install Python dependencies (<a class="reference external" href="http://docs.fabfile.org/">fabric</a>…) with <em>buildout</em> :</p>
 <div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>python bootstrap.py
 <span class="nv">$ </span>bin/buildout
-</pre></div>
-</div>
-<p>Install <a class="reference external" href="https://github.com/mosaicxm/vagrant-hostmaster">vagrant-hostmaster</a> :</p>
-<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>vagrant gem install vagrant-hostmaster
 </pre></div>
 </div>
 <div class="admonition note">
