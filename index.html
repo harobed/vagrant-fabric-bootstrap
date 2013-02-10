@@ -75,17 +75,6 @@ vagrant ssh public key to root account</li>
 <div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>git clone https://github.com/harobed/vagrant-fabric-bootstrap.git
 </pre></div>
 </div>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p>If <a class="reference external" href="https://github.com/mosaicxm/vagrant-hostmaster">vagrant-hostmaster</a> is not installed globally,
-you can install <em>vagrant-hostmaster</em>  localy into vagrant&#8217;s isolated RubyGems instance.</p>
-<p>But, be careful, if you launch command below in folder that contain a <em>Vagrantfile</em>
-with <tt class="docutils literal"><span class="pre">config.hosts</span></tt> parameter, you will get an error. Then, do <tt class="docutils literal"><span class="pre">cd</span> <span class="pre">..</span></tt> before you execute
-command below :</p>
-<div class="last highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>vagrant gem install vagrant-hostmaster
-</pre></div>
-</div>
-</div>
 <p>Install Python dependencies (<a class="reference external" href="http://docs.fabfile.org/">fabric</a>…) with <em>buildout</em> :</p>
 <div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>python bootstrap.py
 <span class="nv">$ </span>bin/buildout
@@ -124,8 +113,29 @@ PING example.com <span class="o">(</span>192.168.33.10<span class="o">)</span>: 
 </div>
 <div class="section" id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="don-t-forget-to-place-mac-address-in-vagrantfile">
+<h3>Don&#8217;t forget to place Mac Address in Vagrantfile<a class="headerlink" href="#don-t-forget-to-place-mac-address-in-vagrantfile" title="Permalink to this headline">¶</a></h3>
 <p>In <tt class="docutils literal"><span class="pre">Vagrantfile</span></tt> I have set mac address :</p>
 <div class="highlight-python"><pre>config.vm.network :hostonly, "192.168.33.10", :mac =&gt; "080027e5f699"</pre>
+</div>
+</div>
+<div class="section" id="vagrant-gem-install-vagrant-hostmaster">
+<h3><strong>vagrant gem install</strong> vagrant-hostmaster<a class="headerlink" href="#vagrant-gem-install-vagrant-hostmaster" title="Permalink to this headline">¶</a></h3>
+<p>If <a class="reference external" href="https://github.com/mosaicxm/vagrant-hostmaster">vagrant-hostmaster</a> is not installed globally,
+you can install <em>vagrant-hostmaster</em> localy into vagrant&#8217;s isolated RubyGems instance.</p>
+<p>But, be careful, if you launch command below in folder that contain a <em>Vagrantfile</em>
+with <tt class="docutils literal"><span class="pre">config.hosts</span></tt> parameter, you will get an error. Then, do <tt class="docutils literal"><span class="pre">cd</span> <span class="pre">..</span></tt> before you execute
+command below :</p>
+<div class="highlight-sh"><div class="highlight"><pre><span class="nv">$ </span>vagrant gem install vagrant-hostmaster
+</pre></div>
+</div>
+</div>
+<div class="section" id="error-method-missing-undefined-method-hosts">
+<h3>Error « &#8216;method_missing&#8217;: undefined method &#8216;hosts&#8217; »<a class="headerlink" href="#error-method-missing-undefined-method-hosts" title="Permalink to this headline">¶</a></h3>
+<p>If you have an error like this :</p>
+<div class="highlight-python"><pre>…/lib/vagrant/config/top.rb:29:in `method_missing': undefined method `hosts' for #&lt;Vagrant::Config::Top:0x007f845914a980&gt; (NoMethodError)</pre>
+</div>
+<p>leave folder which contain <em>Vagrantfile</em> before launch <tt class="docutils literal"><span class="pre">vagrant</span> <span class="pre">gem</span> <span class="pre">install</span> <span class="pre">vagrant-hostmaster</span></tt>.</p>
 </div>
 </div>
 </div>

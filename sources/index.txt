@@ -49,18 +49,6 @@ Clone `vagrant-fabric-bootstrap <https://github.com/harobed/vagrant-fabric-boots
     $ git clone https://github.com/harobed/vagrant-fabric-bootstrap.git
 
 
-.. Note::
-
-    If `vagrant-hostmaster <https://github.com/mosaicxm/vagrant-hostmaster>`_ is not installed globally,
-    you can install *vagrant-hostmaster*  localy into vagrant's isolated RubyGems instance.
-
-    But, be careful, if you launch command below in folder that contain a *Vagrantfile* 
-    with ``config.hosts`` parameter, you will get an error. Then, do ``cd ..`` before you execute
-    command below :
-
-    .. code-block:: sh
-
-        $ vagrant gem install vagrant-hostmaster
 
 
 Install Python dependencies (`fabric <http://docs.fabfile.org/>`_…) with *buildout* :
@@ -112,8 +100,38 @@ Execute *fabric* install :
 Notes
 =====
 
+Don't forget to place Mac Address in Vagrantfile
+------------------------------------------------
+
 In ``Vagrantfile`` I have set mac address :
  
 ::
 
     config.vm.network :hostonly, "192.168.33.10", :mac => "080027e5f699"
+
+
+**vagrant gem install** vagrant-hostmaster
+------------------------------------------
+
+If `vagrant-hostmaster <https://github.com/mosaicxm/vagrant-hostmaster>`_ is not installed globally,
+you can install *vagrant-hostmaster* localy into vagrant's isolated RubyGems instance.
+
+But, be careful, if you launch command below in folder that contain a *Vagrantfile* 
+with ``config.hosts`` parameter, you will get an error. Then, do ``cd ..`` before you execute
+command below :
+
+.. code-block:: sh
+
+    $ vagrant gem install vagrant-hostmaster
+
+
+Error « 'method_missing': undefined method 'hosts' »
+----------------------------------------------------
+
+If you have an error like this :
+
+::
+
+    …/lib/vagrant/config/top.rb:29:in `method_missing': undefined method `hosts' for #<Vagrant::Config::Top:0x007f845914a980> (NoMethodError)
+
+leave folder which contain *Vagrantfile* before launch ``vagrant gem install vagrant-hostmaster``.
